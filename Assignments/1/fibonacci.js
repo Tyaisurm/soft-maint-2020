@@ -1,7 +1,6 @@
 const fs = require("fs");
-const path = require("path");
 
-exports.getFibonacci = function(start = 1, amount = 10) {
+exports.getFibonacci = function(start = 0, amount = 10) {
   /* get fibonacci series starting from 'start', and give 'amount' of them */
 
   let a = 1,
@@ -33,11 +32,15 @@ exports.getFibonacci = function(start = 1, amount = 10) {
     b = temp;
     if (b >= start) {
       if (amount > 0) {
-        arr.push(b);
+        if (b != start) {
+          arr.push(b);
+        }
       } else {
         test = false;
       }
-      amount--;
+      if (b != start) {
+        amount--;
+      }
     }
   }
   let data = arr.join(" ");
